@@ -8,7 +8,7 @@ A collection of four deliberately broken React applications designed for fronten
 
 | Project | Theme | Bug Count | Key Categories |
 |---|---|---|---|
-| [`dashboard-6sense`](#dashboard-6sense) | Analytics dashboard | **46 bugs** | State mutation, stale closures, memory leaks, form bugs |
+| [`dashboard`](#dashboard) | Analytics dashboard | **46 bugs** | State mutation, stale closures, memory leaks, form bugs |
 | [`react-media`](#react-media) | Media asset manager | **43 bugs** | Images, CSS, browser APIs, performance, architecture |
 | [`react-perf`](#react-perf) | Multi-tenant SaaS portal | **22 bugs** | Main-thread blocking, async patterns, layout shift |
 | [`react-pipeline`](#react-pipeline) | Sales pipeline CRM | **22 bugs** | Utility logic, hooks, context, component bugs |
