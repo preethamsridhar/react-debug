@@ -12,7 +12,7 @@ function ImageGallery({ items, user, theme, onSelectItem, selectedItems }) {
     <div>
       <div className="gallery-hero" role="img" aria-label="Gallery hero">
         <img
-         fetchPriority="high"
+          fetchPriority="high"
           src="https://picsum.photos/1200/400?random=hero"
           alt="Gallery hero"
           loading="eager"
@@ -79,6 +79,7 @@ function ImageGallery({ items, user, theme, onSelectItem, selectedItems }) {
 }
 
 const GalleryItem = memo(({ item, onPress, isSelected }) => {
+  console.log("Rendering item:", item);
   return (
     <div
       className="gallery-item"
@@ -91,7 +92,14 @@ const GalleryItem = memo(({ item, onPress, isSelected }) => {
         [isSelected],
       )}
     >
-      <img loading="lazy" src={item.url} alt={item.name} />
+      <img
+        srcSet={`${item.thumbnail} 400w
+          ${item.url} 800w`}
+        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        loading="lazy"
+        src={item.thumbnail}
+        alt={item.name}
+      />
 
       <div style={useMemo(() => ({ padding: "10px 12px" }), [])}>
         <p
