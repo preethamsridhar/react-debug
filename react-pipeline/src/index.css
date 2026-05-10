@@ -1,0 +1,205 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+/* ── App Shell ── */
+.app { display: flex; flex-direction: column; min-height: 100vh; }
+
+.app-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 12px 24px;
+  background: #1e293b;
+  border-bottom: 1px solid #334155;
+  position: sticky; top: 0; z-index: 100;
+}
+
+.app-brand { display: flex; align-items: center; gap: 8px; margin-right: auto; }
+.app-logo  { font-size: 22px; }
+.app-name  { font-size: 18px; font-weight: 700; color: #60a5fa; letter-spacing: -0.5px; }
+
+.app-nav { display: flex; gap: 4px; }
+.nav-tab {
+  padding: 6px 16px; border: none; background: none;
+  color: #94a3b8; cursor: pointer; border-radius: 6px;
+  font-size: 14px; font-weight: 500; transition: all 0.15s;
+}
+.nav-tab:hover          { background: #334155; color: #e2e8f0; }
+.nav-tab--active        { background: #3b82f6; color: #fff; }
+
+/* ── KPI bar ── */
+.kpi-bar {
+  display: flex; gap: 0; border-bottom: 1px solid #334155;
+  background: #1e293b;
+}
+.kpi-item {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  padding: 14px 12px; border-right: 1px solid #334155;
+}
+.kpi-item:last-child { border-right: none; }
+.kpi-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px; color: #64748b; }
+.kpi-value { font-size: 22px; font-weight: 700; color: #f1f5f9; margin-top: 2px; }
+.kpi-chip  { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+
+/* ── Page content ── */
+.page-content { padding: 20px 24px; flex: 1; overflow: auto; }
+
+/* ── Stage filter ── */
+.stage-filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.filter-chip {
+  padding: 5px 14px; border: 1px solid #334155; background: none;
+  color: #94a3b8; border-radius: 20px; cursor: pointer; font-size: 13px;
+  transition: all 0.15s;
+}
+.filter-chip:hover       { border-color: #3b82f6; color: #60a5fa; }
+.filter-chip--active     { background: #1d4ed8; border-color: #1d4ed8; color: #fff; }
+
+/* ── Kanban board ── */
+.board-wrapper { display: flex; flex-direction: column; gap: 12px; }
+.board-toolbar { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+.search-input {
+  padding: 8px 14px; border-radius: 8px; border: 1px solid #334155;
+  background: #1e293b; color: #e2e8f0; font-size: 14px; width: 260px;
+}
+.search-input:focus { outline: none; border-color: #3b82f6; }
+.stage-totals { display: flex; gap: 8px; flex-wrap: wrap; }
+.stage-total-chip {
+  background: #1e293b; border: 1px solid #334155;
+  padding: 4px 10px; border-radius: 12px; font-size: 12px; color: #94a3b8;
+}
+
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(200px, 1fr));
+  gap: 12px;
+  overflow-x: auto;
+}
+
+.kanban-column {
+  background: #1e293b; border-radius: 10px;
+  border: 1px solid #334155; min-height: 400px;
+  display: flex; flex-direction: column;
+}
+.kanban-column__header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; border-bottom: 1px solid #334155;
+  background: #273549; border-radius: 10px 10px 0 0;
+}
+.kanban-column__name  { font-size: 13px; font-weight: 600; color: #cbd5e1; }
+.kanban-column__count { background: #334155; border-radius: 10px; padding: 1px 8px; font-size: 12px; color: #94a3b8; }
+.kanban-column__cards { display: flex; flex-direction: column; gap: 8px; padding: 10px; flex: 1; }
+
+/* ── Deal card ── */
+.deal-card {
+  background: #0f172a; border: 1px solid #334155; border-radius: 8px;
+  padding: 10px 12px; cursor: pointer; transition: border-color 0.15s;
+}
+.deal-card:hover          { border-color: #3b82f6; }
+.deal-card--selected      { border-color: #3b82f6; box-shadow: 0 0 0 2px #1d4ed850; }
+.deal-card__header        { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.deal-card__company       { font-size: 11px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+.deal-card__priority      { font-size: 11px; text-transform: capitalize; }
+.deal-card__title         { font-size: 13px; font-weight: 600; color: #e2e8f0; margin-bottom: 6px; line-height: 1.3; }
+.deal-card__meta          { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.deal-card__value         { font-size: 14px; font-weight: 700; color: #34d399; }
+.deal-card__age           { font-size: 11px; color: #64748b; }
+.deal-card__date          { font-size: 11px; color: #475569; }
+
+/* ── Leaderboard ── */
+.leaderboard { max-width: 900px; }
+.section-title    { font-size: 18px; font-weight: 700; margin-bottom: 16px; color: #f1f5f9; }
+.section-subtitle { font-size: 15px; font-weight: 600; margin: 24px 0 12px; color: #cbd5e1; }
+
+.lb-table { width: 100%; border-collapse: collapse; }
+.lb-table th, .lb-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #1e293b; font-size: 13px; }
+.lb-table th   { color: #64748b; font-weight: 600; background: #1e293b; }
+.lb-table tbody tr:hover { background: #1e293b50; }
+
+.badge {
+  display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 12px; font-weight: 600;
+}
+.badge--green  { background: #064e3b; color: #34d399; }
+.badge--orange { background: #451a03; color: #fb923c; }
+.badge--red    { background: #450a0a; color: #f87171; }
+.badge--blue   { background: #1e3a5f; color: #60a5fa; }
+
+.top-deals    { display: flex; flex-direction: column; gap: 6px; }
+.top-deal-chip {
+  display: flex; align-items: center; gap: 12px;
+  background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 8px 14px;
+}
+.top-deal-company { font-size: 13px; font-weight: 600; flex: 1; }
+.top-deal-value   { font-size: 13px; color: #34d399; font-weight: 700; }
+.top-deal-stage   { font-size: 11px; color: #64748b; }
+
+/* ── Forecast chart ── */
+.forecast-chart { max-width: 800px; }
+.forecast-header { margin-bottom: 24px; }
+.forecast-kpis  { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
+.kpi-chip { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 10px 18px; text-align: center; }
+
+.bar-chart {
+  display: flex; align-items: flex-end; gap: 16px;
+  height: 240px; padding-bottom: 40px; border-bottom: 1px solid #334155;
+}
+.bar-col   { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.bar {
+  width: 100%; background: linear-gradient(180deg, #3b82f6, #1d4ed8);
+  border-radius: 4px 4px 0 0; transition: height 0.3s;
+}
+.bar-label       { font-size: 12px; color: #94a3b8; margin-top: 6px; }
+.bar-count       { font-size: 11px; color: #475569; }
+.bar-value-label { font-size: 11px; color: #60a5fa; margin-bottom: 4px; }
+
+/* ── Activity feed ── */
+.activity-feed   { max-width: 700px; max-height: 520px; overflow-y: auto; }
+.activity-list   { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.activity-item   { display: flex; gap: 12px; background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 12px 14px; }
+.activity-icon   { font-size: 18px; flex-shrink: 0; }
+.activity-body   { display: flex; flex-direction: column; gap: 4px; }
+.activity-deal   { font-size: 12px; font-weight: 600; color: #60a5fa; }
+.activity-note   { font-size: 13px; color: #cbd5e1; }
+.activity-time   { font-size: 11px; color: #475569; }
+.activity-hint   { text-align: center; color: #475569; font-size: 12px; padding: 8px; }
+
+/* ── Modal ── */
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center; z-index: 200;
+}
+.modal {
+  background: #1e293b; border: 1px solid #334155; border-radius: 12px;
+  width: 480px; max-width: 95vw; max-height: 90vh; overflow-y: auto;
+}
+.modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 20px; border-bottom: 1px solid #334155;
+}
+.modal-header h3 { font-size: 16px; font-weight: 700; }
+.modal-close     { background: none; border: none; color: #64748b; font-size: 18px; cursor: pointer; }
+.modal-close:hover { color: #e2e8f0; }
+
+.deal-form { display: flex; flex-direction: column; gap: 14px; padding: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group label { font-size: 12px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
+.form-group input, .form-group select {
+  padding: 9px 12px; background: #0f172a; border: 1px solid #334155;
+  border-radius: 7px; color: #e2e8f0; font-size: 14px;
+}
+.form-group input:focus, .form-group select:focus { outline: none; border-color: #3b82f6; }
+.form-actions { display: flex; justify-content: flex-end; gap: 10px; padding-top: 6px; }
+
+/* ── Buttons ── */
+.btn {
+  padding: 8px 18px; border-radius: 8px; border: 1px solid #334155;
+  background: #1e293b; color: #cbd5e1; cursor: pointer; font-size: 14px;
+  font-weight: 500; transition: background 0.15s;
+}
+.btn:hover      { background: #334155; }
+.btn-primary    { background: #1d4ed8; border-color: #1d4ed8; color: #fff; }
+.btn-primary:hover { background: #2563eb; }
+.btn:disabled   { opacity: 0.5; cursor: not-allowed; }
